@@ -18,11 +18,7 @@ rounter.get("/", (req, res) => {
       ];
 
       const currentUTCTime = new Date().getTime();
-      const twoMinuteWindow = 2 * 60 * 1000; // 2 minutes in milliseconds
-      const randomTimeOffset =
-            Math.floor(Math.random() * (twoMinuteWindow * 2)) - twoMinuteWindow;
-      const adjustedUTCTime = currentUTCTime + randomTimeOffset;
-      const adjustedDate = new Date(adjustedUTCTime);
+      const adjustedDate = new Date(currentUTCTime);
 
       const info = {
             slack_name: slack_name,
