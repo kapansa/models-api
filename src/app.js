@@ -27,7 +27,7 @@ rounter.get("/", (req, res) => {
       const info = {
             slack_name: slack_name,
             current_day: daysOfWeek[current_day],
-            utc_time: adjustedDate,
+            utc_time: adjustedDate.toISOString(),
             track: track,
             github_file_url: "https://github.com/kapansa/api-endpoint/blob/main/app.js",
             github_repo_url: "https://github.com/kapansa/api-endpoint",
