@@ -19,8 +19,8 @@ app.get("/api", (req, res) => {
             current_day: daysOfWeek[current_day],
             utc_time: adjustedDate,
             track: track,
-            github_file_url: "",
-            github_repo_url: "",
+            github_file_url: "https://github.com/kapansa/api-endpoint/blob/main/app.js",
+            github_repo_url: "https://github.com/kapansa/api-endpoint",
             status_code: 200
       }
 
