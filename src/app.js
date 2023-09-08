@@ -3,6 +3,7 @@ const serverless = require("serverless-http");
 
 const app = express();
 const rounter = express.Router();
+app.use("/api", rounter);
 
 rounter.get("/", (req, res) => {
       const { slack_name, track } = req.query;
@@ -37,10 +38,7 @@ rounter.get("/", (req, res) => {
       res.json(info);
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
       console.log(`server is now running on PORT ${PORT}`);
 });
-
-app.use("/.netlify/functions/api", rounter);
-module.exports.handler = serverless(app);
