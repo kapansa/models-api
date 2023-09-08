@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon functions/app.js",
-    "build": "./node_modules/.bin/netify-lambda build functions"
+    "dev": "nodemon src/app.js"
   },
   "author": "",
   "license": "ISC",
