@@ -4,6 +4,10 @@ const app = express();
 const rounter = express.Router();
 app.use("/api", rounter);
 
+rounter.get("/message", (req, res) => {
+      res.send({ message: "Hello Friends!" })
+});
+
 rounter.get("/", (req, res) => {
       const { slack_name, track } = req.query;
       const current_day = new Date().getDay();
