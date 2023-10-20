@@ -1,43 +1,24 @@
 const express = require("express");
-
+const models = require("./models.json");
 const app = express();
 const rounter = express.Router();
 app.use("/api", rounter);
 
 rounter.get("/message", (req, res) => {
-      res.send({ message: "Hello Friends!" })
+  res.send({ message: "This is an API for getting Car models and Makes!" });
 });
 
 rounter.get("/", (req, res) => {
-      const { slack_name, track } = req.query;
-      const current_day = new Date().getDay();
-      const daysOfWeek = [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-      ];
+  const modelsList = [];
 
-      const currentUTCTime = new Date().getTime();
-      const adjustedDate = new Date(currentUTCTime);
+  models.map((car) => {
+    modelsList.push({ model: car?.model, make: car?.make });
+  });
 
-      const info = {
-            slack_name: slack_name,
-            current_day: daysOfWeek[current_day],
-            utc_time: adjustedDate.toISOString().slice(0, -5) + 'Z',
-            track: track,
-            github_file_url: "https://github.com/kapansa/api-endpoint/blob/main/app.js",
-            github_repo_url: "https://github.com/kapansa/api-endpoint",
-            status_code: 200,
-      };
-
-      res.json(info);
+  res.json(modelsList);
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-      console.log(`server is now running on PORT ${PORT}`);
+  console.log(`server is now running on PORT ${PORT}`);
 });
